@@ -1,0 +1,8 @@
+.eslintrc.cjs
+package-lock.json
+postcss.config.js
+tailwind.config.js
+package.json
+vite.config.js
+build
+node_modules

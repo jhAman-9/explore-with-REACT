@@ -8,7 +8,11 @@ export default function Basic() {
     // updating state value
     let increase = () =>{
         if( mark + 1 >= 1 && mark <= 9) {
-            setMark(mark+1); 
+          // 3 times prevMark me +1 kiye hai isliye marks +3 se increase hoga
+            setMark(prevmark => prevmark+1); 
+            setMark(prevmark => prevmark+1); 
+            setMark(prevmark => prevmark+1); 
+            // setMark(mark+1); 
         }
     }
 

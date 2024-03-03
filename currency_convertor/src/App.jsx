@@ -12,6 +12,7 @@ function App() {
   const currencyInfo = useCurrencyInfo(from)
 
   const option = Object.keys(currencyInfo)
+  // console.log(option);
 
   const swap = ()=>{
     setFrom(to);
@@ -20,13 +21,16 @@ function App() {
     setAmount(convertedAmount)
   }
 
+  // console.log(currencyInfo);
+  // console.log(currencyInfo[to]);
   const convert = ()=>{
     setConvertedAmount(amount * currencyInfo[to]);
   }
 
 
   return (
-   <div className='w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat'
+    <>
+   <div className='w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat rounded-md'
     style={{
     backgroundImage : `url('https://images.pexels.com/photos/258209/pexels-photo-258209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')`,
    }}
@@ -44,7 +48,7 @@ function App() {
             label="From" 
             amount={amount} 
             currencyOption={option}
-            onCurrencyChange={(currency) => setAmount(amount)}
+            onCurrencyChange={(currency) => setAmount(currency)}
             selectCurrency={from}
             onAmountChange={(amount) => setAmount(amount)}
             >
@@ -67,7 +71,8 @@ function App() {
               currencyOption={option}
               onCurrencyChange={(currency) => setTo(currency)}
               selectCurrency={from}
-              amountDisable>
+              amountDisable
+              >
               </InputBox>
             </div>
 
@@ -80,6 +85,7 @@ function App() {
     </div>
 
    </div>
+   </>
   );
 }
 

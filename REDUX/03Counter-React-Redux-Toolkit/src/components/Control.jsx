@@ -11,11 +11,9 @@ function Control() {
     dispatch(counterAction.increment());
   };
 
-
   const handleDecrement = () => {
     dispatch(counterAction.decrement());
   };
-
 
   const handleAddition = () => {
     dispatch(
@@ -26,7 +24,6 @@ function Control() {
     inputElement.current.value = "";
   };
 
-
   const handleSubtract = () => {
     dispatch(
       counterAction.subtract({
@@ -36,26 +33,23 @@ function Control() {
     inputElement.current.value = "";
   };
 
-
   const handlePrivacy = () => {
-    dispatch(
-      privacyAction.toggle()
-    );
+    dispatch(privacyAction.toggle());
   };
 
   return (
     <div>
-      <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <div classNameName="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <button
           type="button"
-          className="btn btn-primary"
+          classNameName="btn btn-primary"
           onClick={handleIncrement}
         >
           +1
         </button>
         <button
           type="button"
-          className="btn btn-success"
+          classNameName="btn btn-success"
           onClick={handleDecrement}
         >
           -1
@@ -63,23 +57,31 @@ function Control() {
 
         <button
           type="button"
-          className="btn btn-warning"
+          classNameName="btn btn-warning"
           onClick={handlePrivacy}
         >
           Privacy
         </button>
       </div>
-      <div className="SpaceFromTop d-grid gap-2 d-sm-flex justify-content-sm-center ">
+      <div classNameName="SpaceFromTop d-grid gap-2 d-sm-flex justify-content-sm-center ">
         <input
           type="text"
           placeholder="Enter Number"
-          className="number-input"
+          classNameName="number-input"
           ref={inputElement}
         />
-        <button type="button" className="btn btn-info" onClick={handleAddition}>
+        <button
+          type="button"
+          classNameName="btn btn-info"
+          onClick={handleAddition}
+        >
           Add
         </button>
-        <button type="button" className="btn btn-dark" onClick={handleSubtract}>
+        <button
+          type="button"
+          classNameName="btn btn-dark"
+          onClick={handleSubtract}
+        >
           Subtract
         </button>
       </div>

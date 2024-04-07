@@ -1,4 +1,4 @@
- import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { fetchDataFromApi } from "../util/api.js";
 
 export const Context = createContext();

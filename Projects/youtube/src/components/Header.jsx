@@ -28,9 +28,6 @@ function Header() {
     }
   };
 
-  const mobileMenuToggle = () => {
-    setMobileMenu(!mobileMenu);
-  };
 
   const { pathname } = useLocation();
   const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
@@ -42,8 +39,8 @@ function Header() {
       <div className="flex h-5 items-center">
         {pageName !== "video" && (
           <div
-            className="flex md:hidden md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]"
-            onClick={mobileMenuToggle}
+            className="flex mr-2 md:mr-6 cursor-pointer items-center justify-center h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]"
+            onClick={() => setMobileMenu(!mobileMenu)}
           >
             {mobileMenu ? (
               <CgClose className="text-white text-xl" />

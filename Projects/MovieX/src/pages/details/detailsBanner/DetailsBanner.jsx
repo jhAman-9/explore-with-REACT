@@ -1,3 +1,4 @@
+import Img from "../../../components/lazyLoadImages/Img";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -9,17 +10,16 @@ import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import useFetch from "../../../hooks/useFetch";
 import Genres from "../../../components/genres/Genres";
 import CircleRating from "../../../components/circleRating/CircleRating";
-import Img from "../../../components/lazyLoadImage/Img.jsx";
 import PosterFallback from "../../../assets/no-poster.png";
-import { PlayIcon } from "../Playbtn";
-import VideoPopup from "../../../components/videoPopup/VideoPopup";
+import { PlayIcon } from "../PlayButton";
+import VideoPopup from "../../../components/videoPopUp/VideoPopup";
 
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
 
   const { mediaType, id } = useParams();
-  const { data, loading } = useFetch(`/${mediaType}/${id}`);
+  const { data, loading } = useFetch(`${mediaType}/${id}`);
 
   const { url } = useSelector((state) => state.home);
 
@@ -43,7 +43,7 @@ const DetailsBanner = ({ video, crew }) => {
           {!!data && (
             <React.Fragment>
               <div className="backdrop-img">
-                <Img src={url.backdrop + data.backdrop_path} />
+                <Img src={url.backdrop + data?.backdrop_path} />
               </div>
               <div className="opacity-layer"></div>
               <ContentWrapper>
@@ -55,19 +55,16 @@ const DetailsBanner = ({ video, crew }) => {
                         src={url.backdrop + data.poster_path}
                       />
                     ) : (
-                      <Img className="posterImg" src={PosterFallback} />
+                      <img src={PosterFallback} className="posterImg" />
                     )}
                   </div>
                   <div className="right">
                     <div className="title">
-                      {`${data.name || data.title} (${dayjs(
-                        data?.release_date
-                      ).format("YYYY")})`}
+                      {`${data.name || data.title}
+                        (${dayjs(data?.release_data).format("YYYY")})`}
                     </div>
                     <div className="subtitle">{data.tagline}</div>
-
                     <Genres data={_genres} />
-
                     <div className="row">
                       <CircleRating rating={data.vote_average.toFixed(1)} />
                       <div
@@ -81,12 +78,10 @@ const DetailsBanner = ({ video, crew }) => {
                         <span className="text">Watch Trailer</span>
                       </div>
                     </div>
-
                     <div className="overview">
                       <div className="heading">Overview</div>
                       <div className="description">{data.overview}</div>
                     </div>
-
                     <div className="info">
                       {data.status && (
                         <div className="infoItem">
@@ -142,7 +137,7 @@ const DetailsBanner = ({ video, crew }) => {
 
                     {data?.created_by?.length > 0 && (
                       <div className="info">
-                        <span className="text bold">Creator: </span>
+                        <span className="text bold">Director: </span>
                         <span className="text">
                           {data?.created_by?.map((d, i) => (
                             <span key={i}>
@@ -155,12 +150,12 @@ const DetailsBanner = ({ video, crew }) => {
                     )}
                   </div>
                 </div>
-                <VideoPopup
-                  show={show}
-                  setShow={setShow}
-                  videoId={videoId}
-                  setVideoId={setVideoId}
-                />
+              <VideoPopup
+                show={show}
+                setShow={setShow}
+                videoId={videoId}
+                setVideoId={setVideoId}
+              />
               </ContentWrapper>
             </React.Fragment>
           )}
@@ -186,4 +181,3 @@ const DetailsBanner = ({ video, crew }) => {
 };
 
 export default DetailsBanner;
- 

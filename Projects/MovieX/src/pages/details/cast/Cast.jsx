@@ -26,8 +26,8 @@ const Cast = ({ data, loading }) => {
         {!loading ? (
           <div className="listItems">
             {data?.map((item) => {
-              let imgUrl = item.profile_path
-                ? url.profile + item.profile_path
+              let imgUrl = item?.profile_path
+                ? url.profile + item?.profile_path
                 : avatar;
               return (
                 <div key={item.id} className="listItem">

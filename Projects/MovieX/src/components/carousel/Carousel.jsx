@@ -17,12 +17,12 @@ import CircleRating from "../circleRating/CircleRating";
 import "./style.scss";
 // import { space } from "postcss/lib/list";
 
-const Carousel = ({ data, loading , endPoint}) => {
+const Carousel = ({ data, loading , endPoint, title}) => {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
 
-// Scrolling for Movies and Tv Shows
+// Scrolling for Movies and Tv Shows 
   const navigation = (dir) => {
     const container = carouselContainer.current;
     const scrollAmount = dir === 'left' ?
@@ -50,6 +50,9 @@ const Carousel = ({ data, loading , endPoint}) => {
   return (
     <div className="carousel">
       <ContentWrapper>
+        {title && <div className="carouselTitle">
+          {title}
+        </div>}
         <BsFillArrowLeftCircleFill
           className="carouselLeftNav arrow"
           onClick={() => navigation("left")}

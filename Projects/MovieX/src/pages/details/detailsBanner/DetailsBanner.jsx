@@ -1,7 +1,8 @@
 import Img from "../../../components/lazyLoadImages/Img";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 import dayjs from "dayjs";
 
 import "./style.scss";
@@ -17,9 +18,14 @@ import VideoPopup from "../../../components/videoPopUp/VideoPopup";
 const DetailsBanner = ({ video, crew }) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
+  const { mediaType } = useParams();
+  const { id } = useParams();
 
-  const { mediaType, id } = useParams();
-  const { data, loading } = useFetch(`${mediaType}/${id}`);
+
+  const { data, loading } = useFetch(`/${ "movie" }/${id}`);
+
+    console.log(`mediaType is as ${mediaType}...`);
+
 
   const { url } = useSelector((state) => state.home);
 
@@ -181,3 +187,6 @@ const DetailsBanner = ({ video, crew }) => {
 };
 
 export default DetailsBanner;
+
+
+

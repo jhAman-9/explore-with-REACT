@@ -24,7 +24,6 @@ const App = () => {
 
   const apiConfig = () => {
     fetchDataFromApi("/configuration").then((res) => {
-      console.log(res);
       const url = {
         backdrop : res.images.secure_base_url + 'original',
         poster : res.images.secure_base_url + 'original',
@@ -39,7 +38,7 @@ const App = () => {
   // Genres Call For Movies list and tv show List
   const genresCall = async () => {
     let promises = []
-    let endPoints = ['tv', "movie"];
+    let endPoints = ['movie', 'tv'];
     let allGeneres = {};
 
 
@@ -59,7 +58,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:mediaType/:id" element={<Details />} />
@@ -67,7 +66,7 @@ const App = () => {
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 };

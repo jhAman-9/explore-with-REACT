@@ -1,4 +1,3 @@
-// ??????
 
 import { useParams } from "react-router-dom";
 import "./style.scss";
@@ -8,17 +7,18 @@ import Cast from "./cast/Cast";
 import VideosSection from "./videoSection/VideoSection";
 import Similar from "./carousels/Similar";
 import Recommendation from "./carousels/Recommendation";
+import MovieCard from "../../components/movieCard/MovieCard";
 
 
 const Details = () => {
-    const { mediaType } = useParams();
 
-  const {id } = useParams();
-
- const { data, loading } = useFetch(`/${"movie"}/${id}/videos`);
+ const { mediaType, id } = useParams();
+ const { data, loading } = useFetch(`/${mediaType}/${id}/videos`);
  const { data: credits, loading: creditsLoading } = useFetch(
-   `/${"movie"}/${id}/credits`
+   `/${mediaType}/${id}/credits`
  );
+  
+
   return (
     <div>
       <DetailsBanner video={data?.results?.[0]} crew={credits?.crew} />

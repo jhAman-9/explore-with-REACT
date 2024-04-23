@@ -10,14 +10,12 @@ import dayjs from "dayjs";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import PosterFallback from "../../assets/no-poster.png";
 import Genres from "../genres/Genres";
-// import Genres from "../genres/Genres";
 import Img from "../lazyLoadImages/Img";
 import CircleRating from "../circleRating/CircleRating";
 
 import "./style.scss";
-// import { space } from "postcss/lib/list";
 
-const Carousel = ({ data, loading , endPoint, title}) => {
+const Carousel = ({ data, loading, endPoint, title}) => {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -74,7 +72,7 @@ const Carousel = ({ data, loading , endPoint, title}) => {
                   key={item.id}
                   className="carouselItem"
                   onClick={() =>
-                    navigate(`/${item.media_type || endPoint }  /${item.id}}`)
+                    navigate(`/${item.media_type || endPoint}/${item.id}}`)
                   }
                 >
                   <div className="posterBlock">
@@ -83,7 +81,7 @@ const Carousel = ({ data, loading , endPoint, title}) => {
                     <Genres data={item.genre_ids.slice(0, 2)} />
                   </div>
                   <div className="textBlock">
-                    <span className="title  ">{item.title || item.name}</span>
+                    <span className="title">{item.title || item.name}</span>
                     <span className="date">
                       {dayjs(item.release_Date).format("MMM D, YYYY")}
                     </span>

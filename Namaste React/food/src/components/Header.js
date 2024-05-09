@@ -1,12 +1,9 @@
+import { LOGO_URL } from "../utils/constants";
 function Header() {
   return (
     <div className="header flex justify-between	border border-black">
       <div className="logoContainer p-2 m-2">
-        <img
-          className="logo w-10"
-          src="https://play-lh.googleusercontent.com/h_l3BK710iqr1mH8WY0yEtIJmyPGAKV4upFt4n--NxZO-fJ8wwZxV3ZoSQRn5z1a_Q=w240-h480-rw"
-          alt=""
-        />
+        <img className="logo w-10" src={LOGO_URL} alt="" />
       </div>
 
       <div>

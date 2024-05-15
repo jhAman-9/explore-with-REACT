@@ -43,7 +43,6 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />}></Route>
       <Route path="about" element={<About />}></Route>
       <Route path="contact" element={<Contact />}></Route>
-      //Dynamic Data using Params
       <Route path="user/:userId" element={<User />} />
       <Route path="/gitHub" element={<Github />} loader={githubInfoLoarder} />
     </Route>

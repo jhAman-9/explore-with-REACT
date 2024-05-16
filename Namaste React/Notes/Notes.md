@@ -21,6 +21,7 @@ import {component} from ....
     - if dependency array, then change in dependency it will call..
 
 # Route 
+- Client Side Routing
 - i} create createBrowerRouter
 - ii) RouterProvoder to provide the routing paths
 - iii) for children routing the another children routing is mention with router keyword and in a nested mannner..
@@ -64,3 +65,8 @@ import {component} from ....
           <li className="p-2 m-2">
             <Link to="/contact">Contact us</Link>
           </li>
+
+
+
+- Linking every restorent with specific Id
+![alt text](<Screenshot (146).png>)

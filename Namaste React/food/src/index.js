@@ -18,10 +18,10 @@ import RestorentMenu from "./components/RestorentMenu";
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route path="/" element={<Body />}></Route>
+      <Route path="/body" element={<Body/>}></Route>
       <Route path="/about" element={<About />}></Route>
       <Route path="/contact" element={<Contact />}></Route>
-      <Route path="/restauants/:resId" element={< RestorentMenu/>}></Route>
+      <Route path="/body/restaurants/:resId" element={<RestorentMenu/>}></Route>
     </Route>
   )
 );

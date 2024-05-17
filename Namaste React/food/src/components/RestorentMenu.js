@@ -1,52 +1,48 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { CDN_URL } from "../utils/constants";
 
 const RestorentMenu = () => {
-    const [resMenu, setResMenu] = useState([]);
-    
-    const { resId } = useParams();
+  const { resId } = useParams();
+  console.log(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const resMenu = useRestaurantMenu(resId);
 
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.80570&lng=86.18040&collection=80426&tags=layout_CCS_Dosa&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
-    );
-    const json = await data.json();
-
-    console.log(json);
-    setResMenu(json.data);
-  };
-
-  if (resMenu === null) return <Shimmer />;
+  if (resMenu === null) return <Shimmer/>;
 
   const {
     name,
-    id,
-    avgRating,
-    areaName,
     cuisines,
-    costForTwo,
     // cloudinaryImageId,
-  } = resMenu?.cards[3]?.card?.card?.info;
+    // areaName,
+    // avgRating,
+    costForTwoMessage,
+  } = resMenu?.cards[2]?.card?.card?.info;
+
+  const { itemCards } =
+    resMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+  console.log(itemCards);
 
   return (
-    <>
-      <div>
-        <h1>{name}</h1>
-        <p>{areaName}</p>
-        <h2>{cuisines}</h2>
-        <ul>
-          <li>{avgRating}</li>
-          <li>{costForTwo}</li>
-          <li> {id}</li>
-        </ul>
-      </div>
-    </>
+    <div>
+      <h1 className="text-2xl">{name}</h1>
+      <p>
+        {cuisines.join(", ")} - {costForTwoMessage}
+      </p>
+
+      <h3 className="font-bold m-4">Menu</h3>
+      <ul className="flex flex-col">
+        {itemCards.map((item) => (
+          <l1>
+            {item.card.info.name} - {"Rs."}
+            {item.card.info.price / 100 || item.card.info.defaultPrice /100 }
+          </l1> 
+        ))}
+      </ul>
+    </div>
   );
 };
 

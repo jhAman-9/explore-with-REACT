@@ -10,7 +10,7 @@ function Header() {
       <div>
         <ul className="flex gap-5 pe-10 text-md	font-medium">
           <li className="p-2 m-2">
-            <Link to="/home">Home</Link>
+            <Link to="/body">Home</Link>
           </li>
           <li className="p-2 m-2">
             <Link to="/about">About us</Link>

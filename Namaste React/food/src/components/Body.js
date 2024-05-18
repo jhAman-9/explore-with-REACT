@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import RestaurantCard from "./RestaurantCard";
 import { Link, useParams } from "react-router-dom";
 import { SWIGGY_API, SWIGGY_RESTAURANT_DETAIL_API_END_POINT } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 function Body() {
   const [rest, setRest] = useState([]);
@@ -26,6 +27,9 @@ function Body() {
       json.data.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+  if(onlineStatus === false) return <h1>You are Offline, Please Check Your Internet Connection..</h1>
 
   return rest.length === 0 ? (
     <Shimmer />

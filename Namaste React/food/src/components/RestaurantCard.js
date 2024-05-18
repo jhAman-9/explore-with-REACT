@@ -20,7 +20,7 @@ function RestaurantCard(props) {
       <div className="text-lg">
         <h3 className="text-lg">{props?.resData?.name}</h3>
         <div className="flex flex-wrap font-mono">
-          <h4 className="">{props?.resData?.cuisines}</h4>
+          <h4>{props?.resData?.cuisines}</h4>
         </div>
         <h4>{props?.resData?.avgRating}</h4>
         <h4>{props?.resData?.costForTwo}</h4>

@@ -13,10 +13,11 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Body from "./components/Body";
 import App from "./App";
-import RestorentMenu from "./components/RestorentMenu";
+// import RestorentMenu from "./components/RestorentMenu";
 // import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
+const RestorentMenu = lazy(() => import("./components/RestorentMenu"));
 
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
@@ -28,15 +29,17 @@ const appRouter = createBrowserRouter(
         path="/grocery"
         element={
           <Suspense fallback={<h1>Loading...</h1>}>
-            {" "}
             <Grocery />{" "}
           </Suspense>
         }
       ></Route>
       <Route
         path="/restaurants/:resId"
-        element={<RestorentMenu />}
-        errorElement={<Error />}
+        element={
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <RestorentMenu />{" "}
+          </Suspense>
+        }
       ></Route>
     </Route>
   )

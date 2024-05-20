@@ -4,7 +4,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 function Header() {
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header flex justify-between	border border-black">
+    <div className="header flex justify-between	border border-black bg-pink-50">
       <div className="logoContainer p-2 m-2">
         <img className="logo w-10" src={LOGO_URL} alt="" />
       </div>

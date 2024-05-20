@@ -1,52 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import { CDN_URL } from "../utils/constants";
-
+import RestaurantCategory from "./RestaurantCategory";
 
 const RestorentMenu = () => {
-
-  // const CDN_URL =
-  //   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
-  
   const { resId } = useParams();
 
-  let resMenu = useRestaurantMenu(resId);
+  const resInfo = useRestaurantMenu(resId);
 
-  if (resMenu === null) return <Shimmer/>;
+  if (resInfo.length === 0) return <Shimmer/>;
 
-  const {
-    name,
-    cuisines,
-    cloudinaryImageId,
-    // areaName,
-    // avgRating,
-    costForTwoMessage,
-  } = resMenu.cards[2]?.card?.card?.info;
+  const { name, cuisines, costForTwoMessage } =
+    resInfo?.cards[2]?.card?.card?.info;
 
   const { itemCards } =
-    resMenu.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+  const categories =
+  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((e) => e.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
 
 
   return (
-    <div>
-      <div>{CDN_URL+cloudinaryImageId}</div>
+    <div className="text-center">
       <h1 className="text-2xl">{name}</h1>
       <p>
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
 
-      <h3 className="font-bold m-4">Menu</h3>
-      <ul className="flex flex-col">
-        {itemCards.map((item) => (
-          <li>
-            {item?.card?.info?.name} - {"Rs."}
-            {item?.card?.info?.price / 100 ||
-              item?.card?.info?.defaultPrice / 100}
-          </li>
-        ))}
-      </ul>
+      {categories.map((e,index) => <RestaurantCategory key={index} data={ e?.card?.card} />)
+      }
+    
     </div>
   );
 };

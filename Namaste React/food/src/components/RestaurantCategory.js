@@ -1,14 +1,13 @@
 import React, {useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
-    const [showItems, setShowItems] = useState(false);
+const RestaurantCategory = ({ data, showItems, setShowIdx }) => {
 
     const handleShow = () =>{
-        setShowItems(!showItems);
+        setShowIdx();  
     }
 
-  return (
+  return (   
     <div>
       <div className="w-6/12 mx-auto my-3 hover:shadow-xl cursor-pointer shadow-lg bg-gray-100 p-4 rounded-lg">
         <div className="flex justify-between" onClick={handleShow}>

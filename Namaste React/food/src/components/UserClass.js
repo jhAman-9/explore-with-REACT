@@ -43,14 +43,18 @@ class UserClass extends React.Component {
     const { name,location, avatar_url,id } = this.state.userInfo;
     return (
       <div className="p-5 border-black-4">
-        <img src={avatar_url} alt="" />
-        <span>
-          <h2>name : {name}</h2>
-          <p>id : { id}</p>
-        </span>
-        <h2>Class : BCA</h2>
-        <h3>Roll : 12</h3>
-        <h4>Location : {location}</h4>
+        <div>
+          <img src={avatar_url} alt="" />
+        </div>
+        <div>
+          <span>
+            <h2>Name : {name}</h2>
+            <p>Id : {id}</p>
+          </span>
+          <h2>Class : BCA</h2>
+          <h3>Roll : 12</h3>
+          <h4>Location : {location}</h4>
+        </div>
       </div>
     );
   }

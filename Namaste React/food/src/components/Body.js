@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import { SWIGGY_API } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 function Body() {
   const [rest, setRest] = useState([]);
   const [filterRest, setFilteredRestaurants] = useState([]);
 
   const RestaurantsCardPromoted = withPromotedLabel(RestaurantCard);
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
+
 
   useEffect(() => {
     fetchData();
@@ -31,7 +35,8 @@ function Body() {
 
 
   const onlineStatus = useOnlineStatus();
-  if(onlineStatus === false) return <h1>You are Offline, Please Check Your Internet Connection..</h1>
+  if (onlineStatus === false) return <h1>You are Offline, Please Check Your Internet Connection..</h1>
+  
 
   return rest.length === 0 ? (
     <Shimmer />
@@ -50,6 +55,13 @@ function Body() {
         >
           filter
         </button>
+        </div>
+        
+
+      <div className="head p-3 flex items-center gap-12">
+          <label>Change User Name : </label>
+          <input className="p-2 border border-orange-400 " value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
+          
       </div>
 
       <div className="res-container flex flex-wrap m-1">

@@ -1,8 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 function Header() {
   const onlineStatus = useOnlineStatus();
+
+  // Extracting Data from userContext and as well as using it through useContext..
+  const { loggedInUser } = useContext(UserContext);
+
   return (
     <div className="header flex justify-between	border border-black bg-pink-50">
       <div className="logoContainer p-2 m-2">
@@ -27,6 +33,7 @@ function Header() {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="p-2 m-2">cart</li>
+          <li className="p-2 m-2">Log In : { loggedInUser}</li>
         </ul>
       </div>
     </div>

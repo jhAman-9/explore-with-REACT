@@ -41,27 +41,33 @@ function Body() {
   return rest.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body px-1 bg-yellow-100">
-      <div className="head p-3 flex items-center gap-12">
-        <input type="text" placeholder="search food" />
-        <button
-          className="cursor-pointer"
-          onClick={() => {
-            const filterRest = rest.filter(
-              (res) => res?.info?.resData?.avgRating >= 4
-            );
-            setFilteredRestaurants(filterRest);
-          }}
-        >
-          filter
-        </button>
-        </div>
+      <div className="body px-1 bg-yellow-100">
         
 
-      <div className="head p-3 flex items-center gap-12">
+      <div className="flex">
+        <div className="head p-3 flex items-center gap-12">
+          <input type="text" placeholder="search food" />
+          <button
+            className="cursor-pointer"
+            onClick={() => {
+              const filterRest = rest.filter(
+                (res) => res?.info?.resData?.avgRating >= 4
+              );
+              setFilteredRestaurants(filterRest);
+            }}
+          >
+            filter
+          </button>
+        </div>
+
+        <div className="head p-3 flex items-center gap-12">
           <label>Change User Name : </label>
-          <input className="p-2 border border-orange-400 " value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
-          
+          <input
+            className="p-2 border border-orange-400 "
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="res-container flex flex-wrap m-1">

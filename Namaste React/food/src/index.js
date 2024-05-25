@@ -13,6 +13,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Body from "./components/Body";
 import App from "./App";
+import Cart from "./components/Cart";
 // import RestorentMenu from "./components/RestorentMenu";
 // import Grocery from "./components/Grocery";
 
@@ -41,6 +42,10 @@ const appRouter = createBrowserRouter(
           </Suspense>
         }
       ></Route>
+      <Route
+        path="/cart"
+      element={<Cart/>}>
+      </Route>
     </Route>
   )
 );

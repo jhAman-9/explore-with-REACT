@@ -1,6 +1,5 @@
 import { CDN_URL } from "../utils/constants";
 
-// import { CDN_URL } from "../utils/constants";
 function RestaurantCard(props) {
   const stylecard = {
     background: "#f0f0f0",

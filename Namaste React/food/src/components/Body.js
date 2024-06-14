@@ -14,15 +14,12 @@ function Body() {
 
   const { loggedInUser, setUserName } = useContext(UserContext);
 
-
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      SWIGGY_API
-    );
+    const data = await fetch(SWIGGY_API);
     const json = await data.json();
 
     setRest(
@@ -33,17 +30,14 @@ function Body() {
     );
   };
 
-
   const onlineStatus = useOnlineStatus();
-  if (onlineStatus === false) return <h1>You are Offline, Please Check Your Internet Connection..</h1>
-  
+  if (onlineStatus === false)
+    return <h1>You are Offline, Please Check Your Internet Connection..</h1>;
 
   return rest.length === 0 ? (
     <Shimmer />
   ) : (
-      <div className="body px-1 bg-yellow-100">
-        
-
+    <div className="body px-1 bg-yellow-100">
       <div className="flex">
         <div className="head p-3 flex items-center gap-12">
           <input type="text" placeholder="search food" />
